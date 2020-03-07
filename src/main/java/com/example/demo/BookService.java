@@ -33,5 +33,17 @@ public class BookService {
     public List<BookEntity> findAllBooks() {
         return entityManager.createQuery("FROM  BookEntity ", BookEntity.class).getResultList();
     }
-
+    public BookEntity findByID(int id) {
+        return entityManager.createNamedQuery(BookEntity.FIND_BY_ID, BookEntity.class).setParameter("id", id).getSingleResult();
+    }
+    @Transactional
+    public List<BookEntity> serchByLetter(String letter) {
+        List<BookEntity> temp = findAllBooks();
+        List<BookEntity> result = new ArrayList<>();
+        for (BookEntity bookEntity:temp) {
+            if (bookEntity.getAuthor().contains(letter)||bookEntity.getIsbn().contains(letter)||bookEntity.getTitle().contains(letter))
+                result.add(bookEntity);
+        }
+        return result;
+    }
 }
