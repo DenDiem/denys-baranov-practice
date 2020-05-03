@@ -5,10 +5,10 @@ import javax.persistence.*;
 
 import lombok.*;
 @Entity
-@NamedQueries(
+/*@NamedQueries(
         {
                 @NamedQuery(query = "SELECT u FROM BookEntity u WHERE u.id = :id", name = BookEntity.FIND_BY_ID)
-        })
+        })*/
 @Table(name = "books")
 @NoArgsConstructor
 @Getter
@@ -16,7 +16,7 @@ import lombok.*;
 @ToString
 public class BookEntity
 {
-    public static final String FIND_BY_ID = "BookEntity.FIND_BY_ID";
+    //public static final String FIND_BY_ID = "BookEntity.FIND_BY_ID";
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -31,7 +31,7 @@ public class IndexController {
         BookService bookService = appContext.getBean(BookService.class);
         System.out.println(letter);
         try {
-            searchResults = bookService.serchByLetter(letter);
+            searchResults = bookService.findAllWhereIsbnLikeOrTitleLike(letter,letter);
 
         } catch (Exception ex) {
             //here you should handle unexpected errors
